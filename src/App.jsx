@@ -21,7 +21,13 @@ const tabData = [
 export default function App() {
   const [activeTab, setActiveTab] = useState(1);
   const [isShow, setIsShow] = useState(true);
-  const handelActiveTab = (id) => setActiveTab(id);
+  const [count, setCount] = useState(0);
+
+  const handelActiveTab = (id) => {
+    setActiveTab(id);
+    setCount((prevCount) => prevCount + 1);
+    setCount((prevCount) => prevCount + 1);
+  };
 
   return (
     <div>
@@ -42,7 +48,9 @@ export default function App() {
               );
             })}
           </div>
-          <div className='tab__content'>{tabData[activeTab - 1].content}</div>
+          <div className='tab__content'>
+            {tabData[activeTab - 1].content} {count}
+          </div>
         </div>
       ) : (
         ''
