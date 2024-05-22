@@ -20,25 +20,33 @@ const tabData = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState(1);
+  const [isShow, setIsShow] = useState(true);
   const handelActiveTab = (id) => setActiveTab(id);
 
   return (
-    <div className='tab'>
-      <div className='tab__header'>
-        {tabData.map((tab) => {
-          return (
-            <button
-              onClick={() => handelActiveTab(tab.id)}
-              key={tab.id}
-              className={tab.id == activeTab ? 'active' : ''}
-            >
-              <span>{tab.title}</span>
-              <span className='tab-indicator'></span>
-            </button>
-          );
-        })}
-      </div>
-      <div className='tab__content'>{tabData[activeTab - 1].content}</div>
+    <div>
+      <button onClick={() => setIsShow(!isShow)}>❌</button>
+      {isShow ? (
+        <div className='tab'>
+          <div className='tab__header'>
+            {tabData.map((tab) => {
+              return (
+                <button
+                  onClick={() => handelActiveTab(tab.id)}
+                  key={tab.id}
+                  className={tab.id == activeTab ? 'active' : ''}
+                >
+                  <span>{tab.title}</span>
+                  <span className='tab-indicator'></span>
+                </button>
+              );
+            })}
+          </div>
+          <div className='tab__content'>{tabData[activeTab - 1].content}</div>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
