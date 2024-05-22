@@ -4,6 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+button {
+  border: none;
+  background: none;
+}
 
 :root {
   --slate-300: #cbd5e1;
