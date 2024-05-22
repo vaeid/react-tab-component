@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 const tabData = [
   {
@@ -16,14 +17,21 @@ const tabData = [
     content: 'Create new payment for the user 💰',
   },
 ];
-let activeTab = 2;
+
 export default function App() {
+  const [activeTab, setActiveTab] = useState(1);
+  const handelActiveTab = (id) => setActiveTab(id);
+
   return (
     <div className='tab'>
       <div className='tab__header'>
         {tabData.map((tab) => {
           return (
-            <button key={tab.id} className={tab.id == activeTab ? 'active' : ''}>
+            <button
+              onClick={() => handelActiveTab(tab.id)}
+              key={tab.id}
+              className={tab.id == activeTab ? 'active' : ''}
+            >
               <span>{tab.title}</span>
               <span className='tab-indicator'></span>
             </button>
